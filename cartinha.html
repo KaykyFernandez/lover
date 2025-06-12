@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Dia dos Namorados meu Amor 💘</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #c008b1, #9b0d70);
+      overflow-x: hidden;
+      height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+      color: #fff;
+    }
+
+    header h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px #ff0000;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #680716;
+      transform: rotate(45deg);
+      animation: floatUp 6s linear;
+      opacity: 0.8;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #7e0013;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% { bottom: -50px; opacity: 0; }
+      50% { opacity: 1; }
+      100% { bottom: 100%; opacity: 0; }
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      color: #7e0101;
+      font-size: 1.5em;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 1px 1px #ff0000;
+    }
+
+    .btn-love {
+      display: block;
+      margin: 40px auto;
+      padding: 15px 30px;
+      background-color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2em;
+      color: #5f0d19;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 0, 0, 0.973);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    }
+
+    .modal-content h2 {
+      color: #ff6b81;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      background: #ff6b81;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    /* Player de Música */
+    audio {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 5px;
+    }
+
+    /* Carrossel */
+    .carousel {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+      border-radius: 20px;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .carousel-buttons {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .carousel-buttons button {
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: none;
+      font-size: 2em;
+      padding: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .carousel-buttons button:hover {
+      background-color: rgba(247, 23, 23, 0.7);
+    }
+
+    .vales-minis {
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.titulo-vales {
+  font-size: 2em;
+  color: #ffffff;
+  text-shadow: 1px 1px #5900ff;
+  margin-bottom: 20px;
+}
+
+.vales-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.vale-mini {
+  width: 40px;
+  height: 40px;
+  font-size: 1.5em;
+  background-color: #960289;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  color: var(--cor-principal);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.vale-mini:hover {
+  transform: scale(1.3);
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Feliz Dia dos Namorados! 💖</h1>
+  </header>
+
+  <div class="message">
+    Você é o amor da minha vida. Cada dia contigo é um presente. 💌
+  </div>
+
+  <!-- Carrossel de fotos -->
+  <div class="carousel">
+    <img src="./img/IMG-20250531-WA0069.jpg" alt="Foto do casal 1" class="active">
+    <img src="./img/IMG-20250612-WA0340.jpg" alt="Foto do casal 2">
+    <img src="./img/IMG-20250612-WA0341.jpg" alt="Foto do casal 3">
+    <img src="./img/IMG-20250612-WA0342.jpg" alt="Foto do casal 4">
+    <div class="carousel-buttons">
+      <button onclick="changeSlide(-1)">❮</button>
+      <button onclick="changeSlide(1)">❯</button>
+    </div>
+  </div>
+
+  <!-- Botão e Modal -->
+  <button class="btn-love" onclick="openModal()">Clique para uma surpresa 💌</button>
+
+  <div class="modal" id="loveModal">
+    <div class="modal-content">
+      <h2>Te amo mais que tudo!</h2>
+      <p>Achou que tinha esquecido né... <br>Obrigada por fazer parte da minha vida. Você é meu porto seguro. 💖</p>
+      <button class="close-btn" onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+  <!-- Vales de Amor Pequenos -->
+<section class="vales-minis">
+  <h2 class="titulo-vales">💌 Seus Vales 💌</h2>
+  <div class="vales-icons">
+    <div class="vale-mini" title="Vale Massagem">💆‍♀️</div>
+    <div class="vale-mini" title="Vale Jantar">🍝</div>
+    <div class="vale-mini" title="Vale Cinema">🎬</div>
+    <div class="vale-mini" title="Vale Estrelas">🌌</div>
+  </div>
+</section>
+
+  <!-- Player de Música (id usado para ativar via JS) -->
+  <audio id="musica" src="./img/Jorge & Mateus - Duas Metades - [DVD Ao Vivo em Jurerê] - (Clipe Oficial).mp3" controls preload="auto"></audio>
+
+  <!-- Corações e JavaScript -->
+  <script>
+    // Limite de corações
+    let heartCount = 0;
+    const maxHearts = 50;
+
+    function createHeart() {
+      if (heartCount >= maxHearts) return;
+
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-30px";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      heartCount++;
+
+      setTimeout(() => {
+        heart.remove();
+        heartCount--;
+      }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+
+    // Modal e música
+    function openModal() {
+      document.getElementById('loveModal').style.display = 'flex';
+
+      // Toca música ao abrir modal
+      const audio = document.getElementById('musica');
+      audio.play().catch(err => {
+        console.log("Interação necessária para tocar áudio:", err);
+      });
+    }
+
+    function closeModal() {
+      document.getElementById('loveModal').style.display = 'none';
+    }
+
+    // Carrossel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel img');
+
+    function changeSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
